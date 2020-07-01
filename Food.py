@@ -7,14 +7,15 @@ class Food():
         self.velocity = vel
         self.position = PVector(x, y)
         self.r = 12
-        self.maxspeed = 1.0
-        self.maxforce = 0.01
+        self.color = color(127)
 
     # Method to update food location
-    def update(self, x, y):
+    def update(self, x, y):    
         newPos = PVector(x,y)
         self.position = newPos
-
+        c = color (random(255), random(255), random(255))
+        self.color = c
+        
     def applyForce(self, force):
         # We could add mass here if we want A = F / M
         self.acceleration.add(force)
@@ -22,7 +23,7 @@ class Food():
     def display(self):
         # Draw a triangle rotated in the direction of velocity
         theta = self.velocity.heading()# + PI / 2
-        fill(127)
+        fill(self.color)
         noStroke()
         strokeWeight(1)
         with pushMatrix():
