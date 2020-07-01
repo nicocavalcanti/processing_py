@@ -15,11 +15,14 @@ from Vehicle import Vehicle
 from Food import Food
 
 def setup():
-    global vehicle, food, counter
+    global vehicle, food, counter, textY, textH, foodH
     size(640, 360)
+    textH = height
+    textH = 14
+    foodH = 12
     velocity = PVector(0, 0)
     vehicle = Vehicle(width / 2, height / 2)
-    food = Food(random(width), random(height), velocity)
+    food = Food(random(width-foodH), random(height-foodH-textH-1), velocity)
     counter = 0
 
 def draw():
@@ -31,11 +34,14 @@ def draw():
     vehicle.display()
     #food.update()
     food.display()
+    fill(0)
+    textSize(textH)
+    text('Quantidade de comida coletada: '+str(counter),10,height)
 
     vector = vehicle.position - food.position
 
     if vector.mag() < 5:
-        food.update(random(width), random(height))
+        food.update(random(width-foodH), random(height-foodH-textH-1))
         counter+=1
         print('Comidas Coletadas:',counter)
     
