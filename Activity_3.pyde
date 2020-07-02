@@ -36,7 +36,8 @@ def draw():
     food.display()
     fill(0)
     textSize(textH)
-    text('Quantidade de comida coletada: '+str(counter),10,height)
+    textAlign(CENTER)
+    text('Quantidade de comida coletada: '+str(counter),width/2,height-4)
 
     vector = vehicle.position - food.position
 
